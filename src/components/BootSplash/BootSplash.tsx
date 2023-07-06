@@ -1,6 +1,9 @@
 import React, { useLayoutEffect, useState } from "react";
 
-const BootSplash: React.FC = () => {
+type BootSplashProps = {
+  children?: React.ReactNode;
+};
+const BootSplash: React.FC<BootSplashProps> = ({ children }) => {
   const [isLoading, setIsLoading] = useState(true);
   let listener: any = null;
 
@@ -23,13 +26,15 @@ const BootSplash: React.FC = () => {
       }
     };
   }, []);
+
   return (
     <div
       className={`transition-opacity duration-1000 ${
         isLoading ? "opacity-100" : "opacity-0"
       }`}
+      style={{ pointerEvents: isLoading ? "auto" : "none" }}
     >
-      <div className="fixed top-0 left-0 z-50 w-screen h-screen bg-white flex items-center justify-center">
+      <div className="fixed top-0 left-0 w-screen h-screen bg-white flex items-center justify-center">
         <div className={`animate-bounce flex flex-col items-center`}>
           <svg
             xmlns="http://www.w3.org/2000/svg"
@@ -44,11 +49,6 @@ const BootSplash: React.FC = () => {
           <h1 className="text-2xl font-bold text-primary mt-4">News App</h1>
         </div>
       </div>
-      <div
-        className={`fixed top-0 left-0 z-50 w-screen h-screen bg-white flex items-center justify-center ${
-          isLoading ? "opacity-0" : "opacity-100"
-        }`}
-      ></div>
     </div>
   );
 };

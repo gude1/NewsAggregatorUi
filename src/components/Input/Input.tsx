@@ -123,13 +123,13 @@ export default function Input(props: InputProps): JSX.Element {
   return (
     <div className={`${props.parentClassName} `}>
       <div
-        className={`border-green-800 drop-shadow-md flex rounded-lg w-full h-[50.23px] overflow-hidden items-center bg-white transition-all ${
+        className={`border border-color2 flex rounded-lg w-full h-[40px] overflow-hidden items-center bg-white transition-all pl-3 ${
           props.className
         } ${returnInputStyle()} `}
       >
         {returnLeftIcon()}
         <input
-          className={`w-full ml-[0.8rem] h-full outline-0 border-0 placeholder:text-color4 placeholder:leading-4 text-lg relative placeholder:text-[1.125rem] placeholder:font-normal font-semibold ${props.inputClassName}`}
+          className={`w-full ml-[0.8rem] h-full outline-0 border-0 placeholder:text-color4 placeholder:text-base text-lg relative placeholder:font-normal font-semibold ${props.inputClassName}`}
           placeholder={props.placeholder || "Placeholder"}
           type={returnInputType()}
           name={props.name || ""}
