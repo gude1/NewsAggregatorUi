@@ -1,3 +1,98 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@font-face {
+    font-family: "inter";
+    src: url("../public/fonts/Inter-Regular.ttf");
+}
+
+@layer base {
+
+    html,
+    body {
+        -webkit-font-smoothing: antialiased;
+        -moz-osx-font-smoothing: grayscale;
+        -webkit-tap-highlight-color: transparent;
+        -webkit-touch-callout: none;
+        /* -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none; */
+        box-sizing: border-box;
+    }
+
+    input select,
+    textarea {
+        -webkit-user-select: text;
+        -khtml-user-select: text;
+        -moz-user-select: text;
+        -ms-user-select: text;
+        user-select: text;
+        -webkit-touch-callout: text;
+        border: none;
+        outline: none;
+    }
+
+    input:focus,
+    select:focus,
+    textarea:focus,
+    button:focus {
+        outline: none;
+    }
+
+    /* Firefox */
+    * {
+        scrollbar-width: 0px;
+        /* scrollbar-width: 10px; */
+        /* scrollbar-color: #E5E5E5 transparent; */
+    }
+
+    /* Chrome, Edge, and Safari */
+    *::-webkit-scrollbar {
+        /* width: 10px; */
+        display: none;
+    }
+
+    *::-webkit-scrollbar-track {
+        background: transparent;
+        /* border-radius: 5px; */
+    }
+
+    *::-webkit-scrollbar-thumb {
+        background-color: #E5E5E5;
+        /* border-radius: 14px; */
+        border: 3px solid #E5E5E5;
+    }
+
+    .hide-scrollbar::-webkit-scrollbar {
+        display: none;
+    }
+
+    .hide-scrollbar {
+        scrollbar-width: 0px;
+    }
+
+    @media (max-width: 912px) {
+        *::-webkit-scrollbar {
+            display: none;
+        }
+
+        * {
+            scrollbar-width: 0px;
+        }
+    }
+}
+
+@layer components {
+    .img-placeholder-skeleton {
+        background-color: #ededed;
+        background: linear-gradient(100deg,
+                rgba(255, 255, 255, 0) 40%,
+                rgba(255, 255, 255, 0.5) 50%,
+                rgba(255, 255, 255, 0) 60%) #ededed;
+        background-position-x: 180%;
+        background-size: 200% 100%;
+    }
+}
