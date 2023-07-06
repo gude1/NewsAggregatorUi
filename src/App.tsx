@@ -1,15 +1,9 @@
-import "./App.css";
-import BootSplash from "./components/BootSplash/BootSplash";
+import { BrowserRouter, Routes, Route, useLocation } from "react-router-dom";
+
+function AuthScreens() {}
 
 function App() {
-  return (
-    <div>
-      <BootSplash />
-      <div>
-        <h1 className="text-violet-900">Hello Gideon</h1>
-      </div>
-    </div>
-  );
+  return <div>Hello</div>;
 }
 
 export default App;

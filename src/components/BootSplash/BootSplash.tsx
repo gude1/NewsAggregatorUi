@@ -30,7 +30,7 @@ const BootSplash: React.FC = () => {
       }`}
     >
       <div className="fixed top-0 left-0 z-50 w-screen h-screen bg-white flex items-center justify-center">
-        <div className={`animate-pulse flex flex-col items-center`}>
+        <div className={`animate-bounce flex flex-col items-center`}>
           <svg
             xmlns="http://www.w3.org/2000/svg"
             className="h-16 w-16 text-primary"
