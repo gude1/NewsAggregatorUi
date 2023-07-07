@@ -97,7 +97,7 @@ export default function Input(props: InputProps): JSX.Element {
   const renderStatusText = () => {
     if (props.errortxt) {
       return (
-        <span className="font-inter text-sm font-bold leading-4 text-red-500">
+        <span className="text-sm font-bold leading-4 text-red-500">
           {props.errortxt}
         </span>
       );
@@ -105,7 +105,7 @@ export default function Input(props: InputProps): JSX.Element {
 
     if (props.successtxt) {
       return (
-        <span className="font-inter text-sm font-bold leading-4 text-color2">
+        <span className="text-sm font-bold leading-4 text-color2">
           {props.successtxt}
         </span>
       );
@@ -113,7 +113,7 @@ export default function Input(props: InputProps): JSX.Element {
 
     if (props.infotxt) {
       return (
-        <span className="font-inter text-sm font-bold leading-4 text-color5">
+        <span className="text-sm font-bold leading-4 text-color5">
           {props.infotxt}
         </span>
       );

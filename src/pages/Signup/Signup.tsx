@@ -6,12 +6,16 @@ export default function Signup() {
   return (
     <form className="w-full">
       <div className="flex flex-col items-center">
-        <h2 className="font-bold text-3xl text-center text-color3 font-inter">
+        <h2 className="font-bold text-3xl text-center text-color3">
           Welcome to News App
         </h2>
         <div className="w-[95%] mt-6 max-w-[350px] text-left">
           <label className="text-color3 font-semibold">Email</label>
-          <Input parentClassName="mt-2" placeholder="test@mail.com" />
+          <Input
+            parentClassName="mt-2"
+            placeholder="test@mail.com"
+            name="email"
+          />
         </div>
 
         <div className="w-[95%] mt-6 max-w-[350px] text-left">
@@ -19,6 +23,7 @@ export default function Signup() {
           <Input
             parentClassName="mt-2"
             placeholder="********"
+            name="password"
             type="password"
           />
         </div>

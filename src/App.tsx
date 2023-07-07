@@ -1,6 +1,9 @@
 import { BrowserRouter, Routes, Route, Outlet } from "react-router-dom";
 import Signup from "./pages/Signup/Signup";
 import Signin from "./pages/Signin/Signin";
+import Home from "./pages/Home/Home";
+import Navbar from "./components/Navbar/Navbar";
+import TitleHeader from "./components/TitleHeader/TitleHeader";
 
 function AuthScreenWrapper() {
   return (
@@ -31,15 +34,27 @@ function AuthScreenWrapper() {
   );
 }
 
+function MainWrapper() {
+  return (
+    <div>
+      <Navbar />
+      <TitleHeader />
+      <Outlet />
+    </div>
+  );
+}
+
 function App() {
   return (
     <BrowserRouter>
       <Routes>
-        <Route path="/">
-          <Route path="auth" element={<AuthScreenWrapper />}>
-            <Route path="signup" element={<Signup />} />
-            <Route path="signin" element={<Signin />} />
-          </Route>
+        <Route path="/auth" element={<AuthScreenWrapper />}>
+          <Route path="signup" element={<Signup />} />
+          <Route index element={<Signin />} />
+          <Route path="signin" element={<Signin />} />
+        </Route>
+        <Route path="/" element={<MainWrapper />}>
+          <Route index element={<Home />} />
         </Route>
       </Routes>
     </BrowserRouter>

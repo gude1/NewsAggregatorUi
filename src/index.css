@@ -7,6 +7,11 @@
     src: url("../public/fonts/Inter-Regular.ttf");
 }
 
+@font-face {
+    font-family: "chirp";
+    src: url("/public/fonts/Chirp-Regular.woff2");
+}
+
 @layer base {
 
     html,

@@ -1,9 +1,6 @@
-import React, { useLayoutEffect, useState } from "react";
+import { useLayoutEffect, useState } from "react";
 
-type BootSplashProps = {
-  children?: React.ReactNode;
-};
-const BootSplash: React.FC<BootSplashProps> = ({ children }) => {
+export default function BootSplash() {
   const [isLoading, setIsLoading] = useState(true);
   let listener: any = null;
 
@@ -34,7 +31,7 @@ const BootSplash: React.FC<BootSplashProps> = ({ children }) => {
       }`}
       style={{ pointerEvents: isLoading ? "auto" : "none" }}
     >
-      <div className="fixed top-0 left-0 w-screen h-screen bg-white flex items-center justify-center">
+      <div className="fixed z-50 top-0 left-0 w-screen h-screen bg-white flex items-center justify-center">
         <div className={`animate-bounce flex flex-col items-center`}>
           <svg
             xmlns="http://www.w3.org/2000/svg"
@@ -46,11 +43,11 @@ const BootSplash: React.FC<BootSplashProps> = ({ children }) => {
             <path d="M18 9v4H6V9H4v6h16V9h-2z" />
             <path d="M18 2H6a3 3 0 00-3 3v11a1 1 0 001 1h16a1 1 0 001-1V5a3 3 0 00-3-3zm-1 13H7v-2h10v2zm0-4H7V7h10v4z" />
           </svg>
-          <h1 className="text-2xl font-bold text-primary mt-4">News App</h1>
+          <h1 className="text-2xl font-bold text-primary mt-4 font-chirp">
+            News App
+          </h1>
         </div>
       </div>
     </div>
   );
-};
-
-export default BootSplash;
+}
