@@ -39,7 +39,7 @@ function MainWrapper() {
     <div>
       <Navbar />
       <TitleHeader />
-      <div className="fixed top-[4.5rem] left-0 md:left-[17.9rem] right-0 bottom-14 md:bottom-0 px-5">
+      <div className="border-1 p-0 m-0 border-red-900 fixed overflow-y-auto top-[4.5rem] left-0 md:left-[17.5rem] right-0 bottom-14 md:bottom-0 px-5">
         <Outlet />
       </div>
     </div>

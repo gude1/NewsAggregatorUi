@@ -9,10 +9,21 @@ export default {
         color1: "#4764e6",
         color2: "#1E1E1E",
         color3: "#3D3D3D",
+        color4: "#0a66c2",
       },
       fontFamily: {
         inter: ["inter"],
         chirp: ["chirp"],
+      },
+      keyframes: {
+        loading: {
+          to: {
+            "background-position-x": "-20%",
+          },
+        },
+      },
+      animation: {
+        loading: "loading 1s ease-in-out infinite",
       },
     },
   },

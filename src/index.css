@@ -53,3 +53,15 @@
         display: none;
     }
 }
+
+@layer components {
+    .img-placeholder-skeleton {
+        background-color: #ededed;
+        background: linear-gradient(100deg,
+                rgba(255, 255, 255, 0) 40%,
+                rgba(255, 255, 255, 0.5) 50%,
+                rgba(255, 255, 255, 0) 60%) #ededed;
+        background-position-x: 180%;
+        background-size: 200% 100%;
+    }
+}

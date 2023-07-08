@@ -44,7 +44,7 @@ const Navbar = ({}: NavbarProps) => {
           </svg>
         </div>
 
-        <ul className="flex items-center justify-around md:block border-green-800 md:mt-20 w-full md:w-[95%]">
+        <ul className="flex items-center justify-around md:block border-green-800 w-full md:w-[95%]">
           <li>
             <NavbarBtn
               lefticon={
