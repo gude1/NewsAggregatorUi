@@ -39,7 +39,9 @@ function MainWrapper() {
     <div>
       <Navbar />
       <TitleHeader />
-      <Outlet />
+      <div className="fixed top-[4.5rem] left-0 md:left-[17.9rem] right-0 bottom-14 md:bottom-0 px-5">
+        <Outlet />
+      </div>
     </div>
   );
 }

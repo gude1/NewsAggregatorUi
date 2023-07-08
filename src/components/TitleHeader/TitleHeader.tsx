@@ -25,9 +25,9 @@ export default function TitleHeader({ className }: TitleHeaderProps) {
 
   return (
     <div
-      className={`w-full border-b-[1px] h-12 flex items-center border-gray-300 ${className}`}
+      className={`fixed z-10 border-b-[0.7px] h-[4.5rem] top-0 left-0 right-0 md:left-[17.5rem] flex items-center border-gray-300 bg-transparent ${className}`}
     >
-      <span className="font-bold text-[1.7rem] leading-[2.4rem] ml-5 text-color2">
+      <span className="font-bold text-[1.7rem] ml-5 text-color2">
         {returnPageTitle()}
       </span>
     </div>

@@ -18,7 +18,7 @@ export type InputProps = {
   HTMLInputElement
 >;
 
-export default function Input(props: InputProps): JSX.Element {
+export default function Input(props: InputProps) {
   const [showpass, setShowPass] = useState(false);
 
   const returnLeftIcon = () => {
