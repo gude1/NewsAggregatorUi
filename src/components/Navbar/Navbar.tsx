@@ -1,5 +1,5 @@
 import React from "react";
-import { useLocation } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import { isPath } from "../../utils";
 
 type NavbarProps = {};
@@ -21,12 +21,14 @@ const NavbarBtn = ({
   return (
     <button
       onClick={onClick}
-      className={`relative flex items-center justify-center group hover:bg-color-bg  rounded-md font-medium h-10 md:w-full py-2 px-3 ${className}`}
+      className={`relative flex items-center justify-center group ${
+        selected ? "bg-color-bg" : "hover:bg-color-bg"
+      } rounded-md font-medium h-10 md:w-full py-2 px-3 ${className}`}
     >
       <div className="md:left-[25%] md:absolute">{lefticon}</div>
       <span
-        className={`ml-4 absolute hidden md:block left-[35%] font-medium text-base text-color3 leading-6 group-hover:text-color2 ${
-          selected && "group-hover:font-bold"
+        className={`ml-4 absolute hidden md:block left-[35%]  text-base leading-6 ${
+          selected ? "font-bold text-color2" : "text-color3 font-medium"
         }`}
       >
         {title}
@@ -36,8 +38,7 @@ const NavbarBtn = ({
 };
 
 const Navbar = ({}: NavbarProps) => {
-  const location = useLocation();
-
+  const navigate = useNavigate();
   return (
     <div className="fixed  border-red-900 md:left-0 md:top-0 z-10 bg-white bottom-0 w-full h-14 md:h-auto md:w-[17.5rem]">
       <nav className="h-full flex border-indigo-800 flex-row md:flex-col md:items-center">
@@ -58,7 +59,8 @@ const Navbar = ({}: NavbarProps) => {
           <li>
             <NavbarBtn
               title="Home"
-              selected={isPath("/")}
+              selected={isPath("/", true)}
+              onClick={() => navigate("/", { replace: true })}
               lefticon={
                 <svg
                   width="20"
@@ -83,6 +85,8 @@ const Navbar = ({}: NavbarProps) => {
           <li className="md:mt-4">
             <NavbarBtn
               title="Search"
+              selected={isPath("/search", true)}
+              onClick={() => navigate("/search", { replace: true })}
               lefticon={
                 <svg
                   width="18"
@@ -107,6 +111,8 @@ const Navbar = ({}: NavbarProps) => {
           <li className="md:mt-4">
             <NavbarBtn
               title="Settings"
+              selected={isPath("/settings", true)}
+              onClick={() => navigate("/settings", { replace: true })}
               lefticon={
                 <svg
                   width="24"
