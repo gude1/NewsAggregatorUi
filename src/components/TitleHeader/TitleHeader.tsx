@@ -29,7 +29,7 @@ export default function TitleHeader({ className }: TitleHeaderProps) {
   };
 
   const renderBackArrow = () => {
-    if (location.key !== "default") {
+    if (location.state && location.state.hasPrev) {
       return (
         <svg
           xmlns="http://www.w3.org/2000/svg"

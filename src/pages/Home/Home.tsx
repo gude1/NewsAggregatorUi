@@ -42,7 +42,9 @@ export default function Home() {
         />
       </div>
       <div className="grid grid-cols-1 gap-y-4 gap-x-2 lg:grid-cols-3 justify-items-center sm:justify-items-start group group-first:mt-0">
-        <NewsItem onClick={() => navigate("/details")} />
+        <NewsItem
+          onClick={() => navigate("/details", { state: { hasPrev: true } })}
+        />
         <NewsItem />
         <NewsItem />
         <NewsItem />
