@@ -1,4 +1,10 @@
-import { BrowserRouter, Routes, Route, Outlet } from "react-router-dom";
+import {
+  BrowserRouter,
+  Routes,
+  Route,
+  Outlet,
+  useNavigate,
+} from "react-router-dom";
 import Signup from "./pages/Signup/Signup";
 import Signin from "./pages/Signin/Signin";
 import Home from "./pages/Home/Home";
@@ -7,12 +13,21 @@ import TitleHeader from "./components/TitleHeader/TitleHeader";
 import NewsDetail from "./pages/NewsDetail/NewsDetail";
 import Search from "./pages/Search/Search";
 import Settings from "./pages/Settings/Settings";
+import { useEffect } from "react";
+import { getCookie, isEmpty } from "./utils";
 
 function AuthScreenWrapper() {
+  const navigate = useNavigate();
+  useEffect(() => {
+    if (!isEmpty(getCookie("id_1"))) {
+      navigate("/", { replace: true });
+    }
+  }, []);
+
   return (
-    <div className="h-screen flex flex-col md:flex-row text-center">
-      <div className="flex-[0.4] md:rounded-lg md:flex-[1] md:p-6 md:px-10">
-        <div className="bg-primary md:rounded-2xl flex flex-col justify-center items-center h-full">
+    <div className="h-screen flex flex-col lg:flex-row text-center">
+      <div className="flex-[0.4] lg:rounded-lg lg:flex-[1] lg:p-6 md:px-10">
+        <div className="bg-primary md:rounded-2xl flex flex-col justify-center md:mt-5 items-center h-full">
           <svg
             xmlns="http://www.w3.org/2000/svg"
             className="h-16 w-16 text-white animate-pulse"
@@ -38,6 +53,12 @@ function AuthScreenWrapper() {
 }
 
 function MainWrapper() {
+  const navigate = useNavigate();
+  useEffect(() => {
+    if (isEmpty(getCookie("id_1"))) {
+      navigate("/auth", { replace: true });
+    }
+  }, []);
   return (
     <div>
       <Navbar />

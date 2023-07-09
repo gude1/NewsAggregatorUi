@@ -36,7 +36,12 @@ function Signin() {
             Sign Up
           </Link>
         </span>
-        <Button title={"Sign In"} className="text-white" onClick={() => {}} />
+        <Button
+          title={"Log In"}
+          type="submit"
+          className="text-white"
+          onClick={() => {}}
+        />
       </div>
     </form>
   );

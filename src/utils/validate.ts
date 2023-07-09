@@ -25,9 +25,12 @@ export function validatePhoneNumber(value: string) {
   } else return null;
 }
 
-export function validateFilled(value: string) {
+export function validateFilled(value: string, length?: number) {
   if (!value) {
     return "Input is required";
+  }
+  if (length && value.length < length) {
+    return `Input is required and must be atleast ${length} characters long`;
   }
   return null;
 }

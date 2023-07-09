@@ -17,29 +17,10 @@ export const Console =
     : console;
 
 export const getBaseUrl = () => {
-  // return "http://172.16.30.24:8025/optinet-backend/api";
+  return "http://127.0.0.1:8000/api";
   if (import.meta.env.MODE == "development") {
     return "http://127.0.0.1:8000/api";
   }
-
-  return "http://172.16.30.24:8025/optinet-backend/api";
-};
-
-export const getCmsBasePath = () => {
-  // return "http://172.16.30.24:1337";
-  if (import.meta.env.MODE == "development") {
-    return "http://127.0.0.1:1337";
-  }
-
-  return "http://172.16.30.24:1337";
-};
-
-export const getCmsBaseUrl = (): string => {
-  if (import.meta.env.MODE == "development") {
-    return "http://127.0.0.1:1337/api";
-  }
-
-  return "http://192.168.102.83:8088/api";
 };
 
 export function setCookie(cname = "", cvalue = "", exdays = 1) {
