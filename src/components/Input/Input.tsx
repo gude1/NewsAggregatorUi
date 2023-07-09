@@ -129,7 +129,7 @@ export default function Input(props: InputProps) {
       >
         {returnLeftIcon()}
         <input
-          className={`w-full ml-[0.8rem] h-full outline-0 border-0 placeholder:text-color4 placeholder:text-base text-lg relative placeholder:font-normal font-semibold ${props.inputClassName}`}
+          className={`w-full ml-[0.8rem] h-full outline-0 border-0 placeholder:text-base text-lg relative placeholder:font-normal font-semibold ${props.inputClassName}`}
           placeholder={props.placeholder || "Placeholder"}
           type={returnInputType()}
           name={props.name || ""}
