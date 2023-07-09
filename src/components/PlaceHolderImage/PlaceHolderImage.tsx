@@ -11,7 +11,6 @@ type ImageProps = {
 export default function PlaceHolderImage({
   src,
   width,
-  height,
   className = "",
   onClick,
   placeholderClassName = "",

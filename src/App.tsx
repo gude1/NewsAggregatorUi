@@ -5,6 +5,8 @@ import Home from "./pages/Home/Home";
 import Navbar from "./components/Navbar/Navbar";
 import TitleHeader from "./components/TitleHeader/TitleHeader";
 import NewsDetail from "./pages/NewsDetail/NewsDetail";
+import Search from "./pages/Search/Search";
+import Settings from "./pages/Settings/Settings";
 
 function AuthScreenWrapper() {
   return (
@@ -58,6 +60,8 @@ function App() {
         </Route>
         <Route path="/" element={<MainWrapper />}>
           <Route index element={<Home />} />
+          <Route path="search" element={<Search />} />
+          <Route path="settings" element={<Settings />} />
           <Route path="details" element={<NewsDetail />} />
         </Route>
       </Routes>
