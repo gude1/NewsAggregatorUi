@@ -16,7 +16,7 @@ export type SignupError = {
   password?: [string];
 };
 
-export type SignUpResult = {
+export type AuthResult = {
   message: string;
   data: {
     token: string;
@@ -24,6 +24,23 @@ export type SignUpResult = {
 };
 
 export type SignupPayloadError = {
+  error: SignupError | string;
+  status: number | string;
+};
+
+type SigninAttributes = {
+  email: string;
+  password: string;
+  onSuccess?: () => void;
+  onFail?: () => void;
+};
+
+export type SigninError = {
+  email?: [string];
+  password?: [string];
+};
+
+export type SigninPayloadError = {
   error: SignupError | string;
   status: number | string;
 };
@@ -45,7 +62,6 @@ export const signUp = createAsyncThunk<void, SignUpAttributes>(
           },
         }
       );
-      setCookie("id_1");
       return thunkApi.fulfillWithValue(res.data);
     } catch (err) {
       Console.log("signUp", String(err));
@@ -61,6 +77,43 @@ export const signUp = createAsyncThunk<void, SignUpAttributes>(
       }
       return thunkApi.rejectWithValue({
         error: "Sign Up failed please try again",
+        status: 400,
+      });
+    }
+  }
+);
+
+export const signIn = createAsyncThunk<void, SigninAttributes>(
+  "auth/signin",
+  async (param, thunkApi) => {
+    try {
+      const res = await axios.post(
+        `${getBaseUrl()}/auth/login`,
+        {
+          email: param.email,
+          password: param.email,
+        },
+        {
+          headers: {
+            Accept: "application/json",
+          },
+        }
+      );
+      return thunkApi.fulfillWithValue(res.data);
+    } catch (err) {
+      Console.log("signIn", String(err));
+      if (axios.isAxiosError(err)) {
+        console.log("axioserror", err.response);
+        return thunkApi.rejectWithValue({
+          error:
+            err?.response?.data?.errors ||
+            err?.response?.data?.error ||
+            "Login failed, please try again",
+          status: err.response?.status,
+        });
+      }
+      return thunkApi.rejectWithValue({
+        error: "Login failed please try again",
         status: 400,
       });
     }

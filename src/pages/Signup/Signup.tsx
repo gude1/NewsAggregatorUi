@@ -3,12 +3,8 @@ import Button from "../../components/Button/Button";
 import Input from "../../components/Input/Input";
 import { useState } from "react";
 import { validateEmail, validateFilled } from "../../utils/validate";
-import {
-  SignUpResult,
-  SignupPayloadError,
-  signUp,
-} from "../../redux/thunk/auth";
-import { Console, setCookie } from "../../utils";
+import { AuthResult, SignupPayloadError, signUp } from "../../redux/thunk/auth";
+import { setCookie } from "../../utils";
 import Swal from "sweetalert2";
 import { useAppDispatch } from "../../redux/hooks/hook";
 
@@ -72,7 +68,7 @@ export default function Signup() {
           };
         });
       }
-      if (passerr || emailerr) {
+      if (passerr || emailerr || nameerr) {
         return;
       }
       Swal.fire({
@@ -122,7 +118,7 @@ export default function Signup() {
       }
 
       if (meta.requestStatus == "fulfilled") {
-        let result = payload as SignUpResult;
+        let result = payload as AuthResult;
         setNameInput({});
         setEmailInput({});
         setPasswordInput({});
