@@ -2,11 +2,12 @@ type SelectProps = {
   name?: string;
   title?: string;
   checked?: boolean;
+  defaultChecked?: boolean;
   onChange?: React.InputHTMLAttributes<HTMLInputElement>["onChange"];
 };
 export default function Select({
   name = "CheckBox",
-  checked = false,
+  defaultChecked,
   onChange,
 }: SelectProps) {
   return (
@@ -15,7 +16,8 @@ export default function Select({
         type="checkbox"
         onChange={onChange}
         name={name}
-        checked={checked}
+        // checked={checked}
+        defaultChecked={defaultChecked}
       />
       <span className="ml-2">{name}</span>
     </div>

@@ -2,13 +2,99 @@ import { useState } from "react";
 import Input from "../../components/Input/Input";
 import Select from "../../components/Select/Select";
 import NewsItem from "../../components/NewsItem/NewsItem";
+import Swal from "sweetalert2";
+import { useAppDispatch, useAppSelector } from "../../redux/hooks/hook";
+import { searchNews } from "../../redux/thunk/search";
+import { NewsResponse } from "../../redux/api/types";
+import { useNavigate } from "react-router-dom";
+import { setNewsResults } from "../../redux/slice/NewsResultSlice";
 
 export default function Search() {
-  const [newspref, setNewsPref] = useState({
+  const [newspref] = useState({
     newyork: true,
     guardian: true,
     newsorg: true,
   });
+  const [searchword, setSearchWord] = useState("");
+  const dispatch = useAppDispatch();
+  const navigate = useNavigate();
+  const newsresults = useAppSelector((state) => state.newsres);
+
+  const onSearchClick = async () => {
+    try {
+      if (!searchword || searchword.length < 1) {
+        return;
+      }
+      Swal.fire({
+        title: "Processing",
+        allowOutsideClick: false,
+        didOpen() {
+          Swal.showLoading();
+        },
+      });
+      const result = await dispatch(
+        searchNews({
+          keyword: searchword,
+        })
+      );
+      dispatch(
+        setNewsResults({
+          keyword: searchword,
+        })
+      );
+      const { meta, payload } = result;
+      if (meta.requestStatus == "rejected") {
+        Swal.fire({
+          title: "Search request failed please try again",
+          icon: "error",
+          allowOutsideClick: false,
+        });
+        return;
+      }
+
+      if (meta.requestStatus == "fulfilled") {
+        Swal.close();
+        let result = payload as NewsResponse;
+        if (result.data.length < 1) {
+          Swal.fire({
+            title: `No results for search: "${searchword}"`,
+          });
+          return;
+        }
+        dispatch(
+          setNewsResults({
+            keyword: searchword,
+            data: result.data,
+            page: result.page,
+          })
+        );
+      }
+      console.log("error", result);
+    } catch (err) {
+      Swal.fire({
+        title: "Search request failed please try again",
+        icon: "error",
+      });
+    }
+  };
+
+  const renderNewsList = () => {
+    return newsresults.data.map((item, index) => {
+      return (
+        <NewsItem
+          key={String(index)}
+          section={item.category}
+          onClick={() =>
+            navigate("/details", { state: { news: item, hasPrev: true } })
+          }
+          title={item.title}
+          img={item.image}
+          date={item.date}
+        />
+      );
+    });
+  };
+
   return (
     <div>
       <div className="flex items-center justify-center mt-2">
@@ -16,6 +102,10 @@ export default function Search() {
           parentClassName="mt-2 max-w-[300px]"
           placeholder="test@mail.com"
           type="search"
+          lefticonClick={onSearchClick}
+          onChange={(e) => {
+            setSearchWord(e.target.value || "");
+          }}
           lefticon={
             <svg
               width="18"
@@ -38,41 +128,17 @@ export default function Search() {
         />
       </div>
       <div className="flex justify-evenly mt-4">
-        <Select
-          name="New York Times"
-          checked={newspref.newyork}
-          onChange={(e) => {
-            setNewsPref((obj) => {
-              return { ...obj, newyork: e.target.checked };
-            });
-          }}
-        />
-        <Select
-          name="Guardian News"
-          checked={newspref.guardian}
-          onChange={(e) => {
-            setNewsPref((obj) => {
-              return { ...obj, guardian: e.target.checked };
-            });
-          }}
-        />
-        <Select
-          name="News Org"
-          checked={newspref.newsorg}
-          onChange={(e) => {
-            setNewsPref((obj) => {
-              return { ...obj, newsorg: e.target.checked };
-            });
-          }}
-        />
+        <Select name="New York Times" defaultChecked={newspref.newyork} />
+        <Select name="Guardian News" defaultChecked={newspref.guardian} />
+        <Select name="News Org" defaultChecked={newspref.newsorg} />
       </div>
+      {newsresults.data.length > 0 && (
+        <p className="mt-5">
+          Search Result for <strong>"{newsresults.keyword}"</strong>
+        </p>
+      )}
       <div className="grid grid-cols-1 gap-y-4 gap-x-2 lg:grid-cols-3 justify-items-center sm:justify-items-start mt-2">
-        <NewsItem />
-        <NewsItem />
-        <NewsItem />
-        <NewsItem />
-        <NewsItem />
-        <NewsItem />
+        {renderNewsList()}
       </div>
     </div>
   );

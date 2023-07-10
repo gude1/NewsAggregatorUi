@@ -6,6 +6,7 @@ export type News = {
   title: string;
   source: string;
   category: string;
+  author: string;
   desc: string;
   url: string;
   image: string;

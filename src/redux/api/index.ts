@@ -1,6 +1,6 @@
 import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
 import { getBaseUrl, getCookie } from "../../utils";
-import { News, NewsParams, NewsResponse, UserResponse } from "./types";
+import { NewsParams, NewsResponse, UserResponse } from "./types";
 
 const api = createApi({
   reducerPath: "api",

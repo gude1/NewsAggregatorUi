@@ -1,6 +1,6 @@
 import axios from "axios";
 import { createAsyncThunk } from "@reduxjs/toolkit";
-import { Console, getBaseUrl, getCookie, setCookie } from "../../utils";
+import { Console, getBaseUrl } from "../../utils";
 
 type SignUpAttributes = {
   email: string;

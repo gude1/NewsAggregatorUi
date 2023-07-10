@@ -2,9 +2,11 @@ import { configureStore } from "@reduxjs/toolkit";
 import { setupListeners } from "@reduxjs/toolkit/dist/query";
 import { rtkQueryErrorHandler } from "../middleware/errorhandler";
 import api from "../api";
+import NewsResultSlice from "../slice/NewsResultSlice";
 
 export const store = configureStore({
   reducer: {
+    newsres: NewsResultSlice,
     [api.reducerPath]: api.reducer,
   },
   // Adding the api middleware enables caching, invalidation, polling,
