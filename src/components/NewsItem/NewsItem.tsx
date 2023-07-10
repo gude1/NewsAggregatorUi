@@ -26,7 +26,9 @@ export default function NewsItem({
     >
       <div className="flex-[1] h-full flex flex-col justify-evenly">
         <span className="uppercase font-bold text-blue-900">{section}</span>
-        <span className="mt-2 mr-1 overflow-y-auto cursor-text">{title}</span>
+        <span className="mt-2 mr-1 overflow-y-auto cursor-text flex-[1]">
+          {title}
+        </span>
         <div className="flex justify-between items-center mr-3">
           <span className="mt-2 text-xs font-bold">{date}</span>
           <span className="mt-2 text-xs font-bold ml-2">{author}</span>
@@ -34,8 +36,8 @@ export default function NewsItem({
       </div>
       <PlaceHolderImage
         src={img}
-        placeholderClassName="h-28 w-28 rounded"
-        className="h-28 w-28 rounded"
+        placeholderClassName="h-28 w-28 rounded hidden sm:flex"
+        className="h-28 w-28 rounded hidden"
       />
     </div>
   );

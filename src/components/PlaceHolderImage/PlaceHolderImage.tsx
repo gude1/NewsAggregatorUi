@@ -22,9 +22,9 @@ export default function PlaceHolderImage({
     <>
       {!loaded && (
         <div
-          className={`flex  justify-center transition-all items-center animate-loading img-placeholder-skeleton ${placeholderClassName} ${
+          className={`flex justify-center transition-all items-center animate-loading img-placeholder-skeleton ${
             loaded && "hidden"
-          }`}
+          } ${placeholderClassName}`}
           onClick={onClick}
         >
           <img src={imgPlaceholderSvg} width={"20%"} alt={alt} />
@@ -38,9 +38,9 @@ export default function PlaceHolderImage({
         onLoad={() => setLoaded(true)}
         // loading="lazy"
         onClick={onClick}
-        className={`transition-all object-cover ${className} ${
+        className={`transition-all object-cover ${
           !loaded && "hidden"
-        }`}
+        } ${className}`}
       />
     </>
   );

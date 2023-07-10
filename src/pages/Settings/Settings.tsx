@@ -17,7 +17,15 @@ export default function Settings() {
       return "";
     }
     let displaynamearr = userQuery.data.name.split(" ");
-    return `${displaynamearr[0][0]} ${displaynamearr[1][0]}`;
+    let str_name = "";
+    if (displaynamearr && displaynamearr[0]) {
+      str_name += `${displaynamearr[0][0]}`;
+    }
+
+    if (displaynamearr && displaynamearr[1]) {
+      str_name += `${displaynamearr[1][0]}`;
+    }
+    return str_name;
   };
 
   const handleLogout = async () => {
