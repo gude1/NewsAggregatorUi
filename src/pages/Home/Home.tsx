@@ -14,7 +14,6 @@ export default function Home() {
   const navigate = useNavigate();
   const userQuery = useGetUserQuery();
   const newsQuery = useGetNewsQuery();
-  console.log(newsQuery.data);
   const renderSelectList = () => {
     if (
       userQuery.isFetching ||
@@ -33,33 +32,9 @@ export default function Home() {
 
     return (
       <>
-        <Select
-          name="New York Times"
-          defaultChecked={newspref.newyork}
-          // onChange={(e) => {
-          //   setNewsPref((obj) => {
-          //     return { ...obj, newyork: e.target.checked };
-          //   });
-          // }}
-        />
-        <Select
-          name="Guardian News"
-          defaultChecked={newspref.guardian}
-          // onChange={(e) => {
-          //   setNewsPref((obj) => {
-          //     return { ...obj, guardian: e.target.checked };
-          //   });
-          // }}
-        />
-        <Select
-          name="News Org"
-          defaultChecked={newspref.newsorg}
-          // onChange={(e) => {
-          //   setNewsPref((obj) => {
-          //     return { ...obj, newsorg: e.target.checked };
-          //   });
-          // }}
-        />
+        <Select name="New York Times" defaultChecked={newspref.newyork} />
+        <Select name="Guardian News" defaultChecked={newspref.guardian} />
+        <Select name="News Org" defaultChecked={newspref.newsorg} />
       </>
     );
   };
@@ -96,6 +71,7 @@ export default function Home() {
             navigate("/details", { state: { news: item, hasPrev: true } })
           }
           title={item.title}
+          author={item.author}
           img={item.image}
           date={item.date}
         />

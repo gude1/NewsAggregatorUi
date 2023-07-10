@@ -1,6 +1,6 @@
 import axios from "axios";
 import { createAsyncThunk } from "@reduxjs/toolkit";
-import { Console, getBaseUrl } from "../../utils";
+import { Console, getBaseUrl, getCookie } from "../../utils";
 
 type SignUpAttributes = {
   email: string;
@@ -64,7 +64,6 @@ export const signUp = createAsyncThunk<void, SignUpAttributes>(
       );
       return thunkApi.fulfillWithValue(res.data);
     } catch (err) {
-      Console.log("signUp", String(err));
       if (axios.isAxiosError(err)) {
         console.log("axioserror", err.response);
         return thunkApi.rejectWithValue({
@@ -116,6 +115,26 @@ export const signIn = createAsyncThunk<void, SigninAttributes>(
         error: "Login failed please try again",
         status: 400,
       });
+    }
+  }
+);
+
+export const logOut = createAsyncThunk<string, void>(
+  "auth/logOut",
+  async (_param, thunkApi) => {
+    try {
+      await axios.post(`${getBaseUrl()}/auth/logout`, null, {
+        headers: {
+          Accept: "application/json",
+          Authorization: `Bearer ${getCookie("id_1")}`,
+        },
+      });
+      return thunkApi.fulfillWithValue("Log out success");
+    } catch (err) {
+      if (axios.isAxiosError(err) && err.response?.status == 401) {
+        return thunkApi.fulfillWithValue("Log out success");
+      }
+      return thunkApi.rejectWithValue("Log out failed");
     }
   }
 );

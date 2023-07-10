@@ -69,7 +69,6 @@ export default function Search() {
           })
         );
       }
-      console.log("error", result);
     } catch (err) {
       Swal.fire({
         title: "Search request failed please try again",
@@ -88,6 +87,7 @@ export default function Search() {
             navigate("/details", { state: { news: item, hasPrev: true } })
           }
           title={item.title}
+          author={item.author}
           img={item.image}
           date={item.date}
         />

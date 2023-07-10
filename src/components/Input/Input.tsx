@@ -135,6 +135,7 @@ export default function Input(props: InputProps) {
           name={props.name || ""}
           disabled={props.disabled}
           value={props.value}
+          readOnly={props.readOnly}
           onChange={props.onChange}
           required={props.required || false}
         />
