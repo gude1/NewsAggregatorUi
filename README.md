@@ -1,19 +1,29 @@
 # Docker Compose Instructions
+This respository is a vite react web application that users can login into to read news from credible sources across the world. This Frontend app consumes the endpoints of <a href="https://github.com/gude1/NewsAggergatorApi">NewsAggregatorApi</a>
 
-This repository contains a Vite React app that can be easily dockerized and deployed using Docker Compose.
+## Table of Contents
+* [Features](#Features)
+* [Configuration](#Configuration and setup)
+* [Tech Stack](#Tech%Stack)
 
-## Prerequisites
+## Features
+<li>BootSplash Page</li>
+<li> Signup, SignIn Page</li>
+<li>News List Page</li>
+<li>Search News Page</li>
+<li>Profile & Log out page</li>
 
-Before getting started, ensure that you have the following prerequisites installed on your system:
+## Configuration and setup
+<h2>Ensure that you have properly setup docker on your local machine</h2>
+<li>Run the following commands</li>
 
-- Docker: Install Docker from [https://docs.docker.com/get-docker/](https://docs.docker.com/get-docker/)
+```bash
+git clone this repo
+cd into the project
+docker compose up --build
+```
+<p>Laravel app should be available on http://127.0.0.1:8100/</p>
 
-## Docker Compose Setup
-
-Follow these steps to docker-compose the Vite React app:
-
-1. Clone the repository to your local machine:
-
-   ```shell
-   git clone https://github.com/your-username/your-repo.git
+## Tech Stack
+Vite React, Tailwindcss, Typescript
 
