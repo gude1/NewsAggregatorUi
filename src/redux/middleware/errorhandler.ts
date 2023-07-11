@@ -1,6 +1,6 @@
 import { isRejectedWithValue } from "@reduxjs/toolkit";
 import type { Middleware } from "@reduxjs/toolkit";
-import { Console, deleteCookie } from "../../utils";
+import { Console, deleteCookie, getCookie } from "../../utils";
 import Swal from "sweetalert2";
 
 /**
@@ -8,7 +8,7 @@ import Swal from "sweetalert2";
  */
 export const rtkQueryErrorHandler: Middleware = () => (next) => (action) => {
   if (isRejectedWithValue(action)) {
-    if (action.payload.status == 401) {
+    if (action.payload.status == 401 && getCookie("id_1")) {
       Console.error("middleware", action);
       Swal.fire({
         title: "Your session has expired you are required to login again ",
