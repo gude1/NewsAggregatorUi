@@ -15,14 +15,13 @@ This respository is a vite react web application that users can login into to re
 
 ## Configuration and setup
 <h2>Ensure that you have properly setup docker on your local machine</h2>
-<li>Run the following commands</li>
+<li>git clone the repo</li>
+<li>cd into the root project dir </li>
 
 ```bash
-git clone this repo
-cd into the project
 docker compose up --build
 ```
-<p>Laravel app should be available on http://127.0.0.1:8100/</p>
+Laravel app should be available on http://127.0.0.1:8100/
 
 ## Tech Stack
 Vite React, Tailwindcss, Typescript
